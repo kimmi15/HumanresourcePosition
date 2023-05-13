@@ -6,6 +6,8 @@ const validator = require("../validator/validate")
 const jwt = require("jsonwebtoken");
 const bcrypt = require('bcrypt');
 
+var tambola = require('tambola-generator');
+
 const createTicket = async (req, res) => {
     try {
         let { tickettype, email, password } = req.body
@@ -66,14 +68,6 @@ const logIn = async function (req, res) {
 
 
 
-
-
-
-
-
-
-
-
 const  createtambulaTicket= async (req, res) => {
   try {
     const { userId, numberOfTickets } = req.body;
@@ -123,10 +117,10 @@ const gettambulaTicket=async (req, res) => {
     const limit = parseInt(pageSize);
 
     // find the tickets associated with the user and paginate the results
-    const tickets = await TambulaTicket.find({ userId }).skip(skip).limit(limit).sort({ createdAt: 'desc' });
+    const tickets = await TicketModels.find({ userId }).skip(skip).limit(limit).sort({ createdAt: 'desc' });
 
     // count the total number of tickets associated with the user
-    const total = await TambulaTicket.countDocuments({ userId });
+    const total = await TicketModels.countDocuments({ userId });
 
     res.json({ message: 'Tickets fetched successfully', data: tickets, total });
   } catch (error) {
