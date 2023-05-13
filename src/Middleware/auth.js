@@ -12,7 +12,7 @@ const Authentication = function (req, res, next) {
         if(err) return res.status(401).send({status:false, msg:"token is not valid"})
     
     else {req.validticket = data} 
-    console.log(req.validticket)
+    // console.log(req.validticket)
     // console.log(data) 
     next()
     })

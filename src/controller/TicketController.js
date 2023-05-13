@@ -132,14 +132,14 @@ const gettambulaTicket = async (req, res) => {
   try {
     const { page, pageSize } = req.query;
 
-    const skip = (page - 1) * pageSize;
-    const limit = parseInt(pageSize);
+    const skip = (page - 1) * pageSize; // 1 -1 * 5 == 0 -> 
+    const limit = parseInt(pageSize); // 10
 
     // find the tickets associated with the user and paginate the results
-    const tickets = await ticket.find({}).skip(skip).limit(limit).sort({ createdAt: 'desc' });
+    const tickets = await ticket.find({}).skip(skip).limit(limit).sort({ createdAt: -1 });
 
     // count the total number of tickets associated with the user
-    const total = await ticket.countDocuments({ });
+    const total = await ticket.countDocuments({});
 
     res.json({ message: 'Tickets fetched successfully', data: tickets, total });
   } catch (error) {
