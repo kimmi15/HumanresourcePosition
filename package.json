@@ -1,7 +1,7 @@
 {
-  "name": "todo",
+  "name": "Human resource Position",
   "version": "1.0.0",
-  "description": "simple todo application using Node",
+  "description": "simple Human application using Node",
   "main": "index.js",
   "scripts": {
     "start": "nodemon src/index.js"
