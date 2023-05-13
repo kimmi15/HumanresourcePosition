@@ -10,7 +10,7 @@ route.post('/logIn',logIn)
 
 route.post('/creatTicket',commnMid.Authentication,createtambulaTicket)
 
-route.get('/gettambulaTicket',gettambulaTicket)
+route.get('/gettambulaTicket',commnMid.Authentication,gettambulaTicket)
 
 
 module.exports = route
